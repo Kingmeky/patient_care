@@ -55,7 +55,7 @@ class LoginScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => HomeScreen()),
                   );
                 },
-                child: Text('Login'),
+                child: Text('Login'), // login
               ),
               SizedBox(height: 10.0),
               TextButton(
