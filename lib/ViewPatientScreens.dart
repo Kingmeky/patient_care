@@ -5,14 +5,14 @@ class ViewPatientScreens extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Patient'),
+        title: Text('View Patient'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Welcome to the Add Patient Screen!',
+              'Welcome to the View Patient Screen!',
               style: TextStyle(fontSize: 24.0),
               textAlign: TextAlign.center,
             ),
@@ -21,7 +21,7 @@ class ViewPatientScreens extends StatelessWidget {
               onPressed: () {
                 // Add functionality to add a patient
               },
-              child: Text('Add Patient'),
+              child: Text('View Patient'),
             ),
           ],
         ),
