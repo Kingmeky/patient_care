@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'HomeScreen.dart';
+import 'RegistrationScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -71,7 +72,12 @@ class LoginScreen extends StatelessWidget {
                   Text("Don't have an account?"),
                   TextButton(
                     onPressed: () {
-                      // Implement sign up navigation
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                RegistrationScreen()), // Navigate to registration screen
+                      );
                     },
                     child: Text('Sign Up'),
                   ),
