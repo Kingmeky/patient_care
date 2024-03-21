@@ -25,7 +25,7 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Patient'),
+        title: Text('Add Patients'),
       ),
       body: Container(
         decoration: BoxDecoration(
