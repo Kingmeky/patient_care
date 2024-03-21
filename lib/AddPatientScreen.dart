@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class AddPatientScreen extends StatefulWidget {
   @override
@@ -110,5 +112,31 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
     );
   }
 
-  void _addPatient() {}
+  void _addPatient() async {
+    final String name = nameController.text;
+    final String dob = dobController.text;
+    final String medicalCase = medicalCaseController.text;
+
+    final Uri uri = Uri.parse('http://localhost:3000/patients');
+    final response = await http.post(
+      uri,
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'name': name,
+        'dob': dob,
+        'gender': gender,
+        'medicalCase': medicalCase,
+      }),
+    );
+
+    if (response.statusCode == 201) {
+      // Patient added successfully
+      print('Patient added successfully');
+      // You can navigate to another screen or perform other actions here
+    } else {
+      // Failed to add patient
+      print('Failed to add patient');
+      // Handle error or display error message
+    }
+  }
 }
