@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'HomeScreen.dart';
 import 'RegistrationScreen.dart'; // Import your registration screen file
 
+//Main Screen
 void main() {
   runApp(MyApp());
 }
