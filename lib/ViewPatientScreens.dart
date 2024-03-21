@@ -21,7 +21,7 @@ class ViewPatientScreens extends StatelessWidget {
               onPressed: () {
                 // Add functionality to add a patient
               },
-              child: Text('View Patient'),
+              child: Text('View Patients'),
             ),
           ],
         ),
