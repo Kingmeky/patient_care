@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//RegistrationScreen
 class RegistrationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
