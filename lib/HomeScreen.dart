@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'AddPatientScreen.dart';
 import 'ViewPatientScreens.dart';
-
+//home screen
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
