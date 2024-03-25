@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'HomeScreen.dart';
-import 'RegistrationScreen.dart'; // Import your registration screen file
+import 'RegistrationScreen.dart';
 
-//Main Screen
 void main() {
   runApp(MyApp());
 }
@@ -20,8 +19,23 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(100.0),
+        child: AppBar(
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.blue.shade900,
+                  Colors.blue.shade500,
+                ],
+              ),
+            ),
+          ),
+          title: Text('Login'),
+        ),
       ),
       body: Container(
         decoration: BoxDecoration(
