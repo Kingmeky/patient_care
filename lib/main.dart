@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-                'images/background.png'), // Replace 'assets/background_image.jpg' with your image path
+                'images/greenandwhitejpg.jpg'), // Replace 'assets/background_image.jpg' with your image path
             fit: BoxFit.cover,
           ),
         ),

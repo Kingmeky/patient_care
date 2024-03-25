@@ -44,3 +44,29 @@ app.post('/patients', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+// Route to get all patients
+app.get('/patients', async (req, res) => {
+  try {
+    // Retrieve all patients from the database
+    const patients = await Patient.find();
+
+    // Respond with the retrieved patients
+    res.status(200).json(patients);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+// Route to delete a patient by ID
+app.delete('/patients/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    // Find the patient by ID and delete it from the database
+    await Patient.findByIdAndDelete(id);
+    res.status(200).json({ message: 'Patient deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
