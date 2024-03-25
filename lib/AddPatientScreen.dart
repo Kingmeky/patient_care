@@ -24,91 +24,152 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Add Patient'),
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("images/background.png"),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Name:',
-                  style: TextStyle(fontSize: 18.0),
-                ),
-                TextField(
-                  controller: nameController,
-                  decoration: InputDecoration(hintText: 'Enter name'),
-                ),
-                SizedBox(height: 20.0),
-                Text(
-                  'Date of Birth:',
-                  style: TextStyle(fontSize: 18.0),
-                ),
-                TextField(
-                  controller: dobController,
-                  decoration: InputDecoration(hintText: 'Enter date of birth'),
-                ),
-                SizedBox(height: 20.0),
-                Text(
-                  'Gender:',
-                  style: TextStyle(fontSize: 18.0),
-                ),
-                Row(
-                  children: [
-                    Radio(
-                      value: 'Male',
-                      groupValue: gender,
-                      onChanged: (value) {
-                        setState(() {
-                          gender = value.toString();
-                        });
-                      },
-                    ),
-                    Text('Male'),
-                    Radio(
-                      value: 'Female',
-                      groupValue: gender,
-                      onChanged: (value) {
-                        setState(() {
-                          gender = value.toString();
-                        });
-                      },
-                    ),
-                    Text('Female'),
-                  ],
-                ),
-                SizedBox(height: 20.0),
-                Text(
-                  'Medical Case:',
-                  style: TextStyle(fontSize: 18.0),
-                ),
-                TextField(
-                  controller: medicalCaseController,
-                  decoration:
-                      InputDecoration(hintText: 'Enter medical case details'),
-                ),
-                SizedBox(height: 20.0),
-                ElevatedButton(
-                  onPressed: () {
-                    // Add functionality to add a patient
-                    _addPatient();
-                  },
-                  child: Text('Add Patient'),
-                ),
-              ],
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(100.0),
+        child: AppBar(
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.blue.shade900,
+                  Colors.blue.shade500,
+                ],
+              ),
             ),
           ),
+          title: Container(
+            padding: EdgeInsets.symmetric(vertical: 16.0),
+            alignment: Alignment.center,
+            child: Text(
+              'Add Patient',
+              style: TextStyle(
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                letterSpacing: 1.5,
+                fontFamily: 'Rockwell',
+              ),
+            ),
+          ),
+          elevation: 0.0,
         ),
       ),
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("images/greenandwhitejpg.jpg"),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildTextInputField('Name', nameController),
+                  SizedBox(height: 20.0),
+                  _buildTextInputField('Date of Birth', dobController),
+                  SizedBox(height: 20.0),
+                  _buildGenderSelection(),
+                  SizedBox(height: 20.0),
+                  _buildTextInputField('Medical Case', medicalCaseController),
+                  SizedBox(height: 20.0),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Add functionality to add a patient
+                        _addPatient();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          'Add Patient',
+                          style:
+                              TextStyle(fontFamily: 'Rockwell', fontSize: 18),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTextInputField(
+      String labelText, TextEditingController controller) {
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      child: TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: labelText,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildGenderSelection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Gender:',
+          style: TextStyle(fontSize: 18.0, fontFamily: 'Rockwell'),
+        ),
+        Row(
+          children: [
+            Radio(
+              value: 'Male',
+              groupValue: gender,
+              onChanged: (value) {
+                setState(() {
+                  gender = value.toString();
+                });
+              },
+            ),
+            Text('Male', style: TextStyle(fontFamily: 'Rockwell')),
+            Radio(
+              value: 'Female',
+              groupValue: gender,
+              onChanged: (value) {
+                setState(() {
+                  gender = value.toString();
+                });
+              },
+            ),
+            Text('Female', style: TextStyle(fontFamily: 'Rockwell')),
+          ],
+        ),
+      ],
     );
   }
 
@@ -131,6 +192,7 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
 
     if (response.statusCode == 201) {
       // Patient added successfully
+      _showSuccessDialog();
       print('Patient added successfully');
       // You can navigate to another screen or perform other actions here
     } else {
@@ -138,5 +200,25 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
       print('Failed to add patient');
       // Handle error or display error message
     }
+  }
+
+  void _showSuccessDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Success"),
+          content: Text("Patient added successfully."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

@@ -135,17 +135,17 @@ class _ViewPatientScreensState extends State<ViewPatientScreens> {
                                   SizedBox(height: 8.0),
                                   Text(
                                     'DOB: ${patients[index]['dob']}',
-                                    style: TextStyle(fontSize: 16.0),
+                                    style: TextStyle(fontFamily: 'Rockwell'),
                                   ),
                                   SizedBox(height: 4.0),
                                   Text(
                                     'Gender: ${patients[index]['gender']}',
-                                    style: TextStyle(fontSize: 16.0),
+                                    style: TextStyle(fontFamily: 'Rockwell'),
                                   ),
                                   SizedBox(height: 4.0),
                                   Text(
                                     'Medical Case: ${patients[index]['medicalCase']}',
-                                    style: TextStyle(fontSize: 16.0),
+                                    style: TextStyle(fontFamily: 'Rockwell'),
                                   ),
                                   SizedBox(height: 8.0),
                                 ],
