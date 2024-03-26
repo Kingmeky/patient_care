@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'AddPatientScreen.dart';
 import 'ViewPatientScreens.dart';
 
-//Home Screen
+// Home Screen
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -70,6 +71,26 @@ class HomeScreen extends StatelessWidget {
                         Icon(Icons.view_list, size: 48.0),
                         SizedBox(height: 8.0),
                         Text('View Patient', style: TextStyle(fontSize: 18.0)),
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      // Handle "Add Patient Test" icon tap
+                      // Navigate to the screen where you can add a patient test
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                AddPatientScreen()), // You can replace AddPatientScreen with the appropriate screen for adding patient test
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Icon(Icons.add_circle, size: 48.0),
+                        SizedBox(height: 8.0),
+                        Text('Add Patient Test',
+                            style: TextStyle(fontSize: 18.0)),
                       ],
                     ),
                   ),
