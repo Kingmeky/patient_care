@@ -147,21 +147,37 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.logout),
-            onPressed: () {
-              // Handle logout here
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => MyApp()), // Redirect to login screen
-              );
-            },
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(100.0),
+        child: AppBar(
+          title: Text('Home'),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.logout),
+              onPressed: () {
+                // Handle logout here
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          MyApp()), // Redirect to login screen
+                );
+              },
+            ),
+          ],
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.blue.shade900,
+                  Colors.blue.shade500,
+                ],
+              ),
+            ),
           ),
-        ],
+        ),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -178,8 +194,8 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                'Welcome to the Home Screen!',
-                style: TextStyle(fontSize: 24.0),
+                'Welcome, select an activity below',
+                style: TextStyle(fontSize: 24.0, fontFamily: 'Rockwell'),
                 textAlign: TextAlign.center,
               ),
             ),
