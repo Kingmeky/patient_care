@@ -267,7 +267,7 @@ class HomeScreen extends StatelessWidget {
                     },
                     child: Column(
                       children: [
-                        Icon(Icons.add_circle, size: 48.0),
+                        Icon(Icons.read_more, size: 48.0),
                         SizedBox(height: 8.0),
                         Text('View Patient Test',
                             style: TextStyle(fontSize: 18.0)),
