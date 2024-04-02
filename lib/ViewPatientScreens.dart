@@ -9,7 +9,7 @@ class ViewPatientScreens extends StatefulWidget {
 
 class _ViewPatientScreensState extends State<ViewPatientScreens> {
   List<dynamic> patients = [];
-
+// calling the fetch Patient method
   Future<void> fetchPatients() async {
     final response = await http.get(Uri.parse(
         'http://localhost:3000/patients')); // Replace 'http://localhost:3000/patients' with your server address
