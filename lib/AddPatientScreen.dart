@@ -20,7 +20,7 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
     medicalCaseController.dispose();
     super.dispose();
   }
-
+//  updating add patient screen UI
   @override
   Widget build(BuildContext context) {
     return Scaffold(
